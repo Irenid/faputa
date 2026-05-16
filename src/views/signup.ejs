@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация</title>
+    <link href="/public/bootstrap.min.css" rel="stylesheet">
+    <script src="/public/htmx.min.js"></script>
+    <style>
+      body { background: linear-gradient(135deg, #e0eafc, #cfdef3); min-height: 100vh; }
+      .auth-card { max-width: 500px; width: 100%; border: none; border-radius: 15px; }
+    </style>
+</head>
+<body class="d-flex align-items-center justify-content-center py-5">
+
+<div class="card auth-card shadow p-4 bg-white">
+    <h3 class="text-center mb-4 fw-bold text-success">Регистрация</h3>
+
+    <div id="error-container" class="mb-3"></div>
+
+    <form hx-post="/users/signup" hx-target="#error-container" hx-swap="innerHTML">
+        <div class="form-floating mb-3">
+            <input type="text" name="login" class="form-control" id="login" placeholder="Логин" required minlength="6">
+            <label for="login">Логин</label>
+        </div>
+
+        <div class="form-floating mb-3">
+            <input type="password" name="password" class="form-control" id="password" placeholder="Пароль" required minlength="8">
+            <label for="password">Пароль</label>
+        </div>
+
+        <div class="row g-2 mb-3">
+            <div class="col-md-4">
+                <div class="form-floating">
+                    <input type="text" name="name" class="form-control" id="name" placeholder="Имя" required>
+                    <label for="name">Имя</label>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-floating">
+                    <input type="text" name="surname" class="form-control" id="surname" placeholder="Фамилия" required>
+                    <label for="surname">Фамилия</label>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-floating">
+                    <input type="text" name="lastname" class="form-control" id="lastname" placeholder="Отчество" required>
+                    <label for="lastname">Отчество</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-floating mb-3">
+            <input type="tel" name="phone" class="form-control" id="phone" placeholder="8XXXXXXXXXX" pattern="^8\d{10}$" required>
+            <label for="phone">Телефон</label>
+        </div>
+
+        <div class="form-floating mb-4">
+            <input type="email" name="email" class="form-control" id="email" placeholder="Email" required>
+            <label for="email">Электронная почта</label>
+        </div>
+
+        <button type="submit" class="btn btn-success w-100 py-2.5 mb-3 fw-bold">Создать аккаунт</button>
+    </form>
+
+    <div class="text-center text-muted small">
+        Уже есть аккаунт? <a href="/users/signin" class="text-decoration-none">Войти</a>
+    </div>
+</div>
+
+</body>
+</html>
